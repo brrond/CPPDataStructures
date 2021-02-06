@@ -3,6 +3,8 @@
 #include <string>
 
 #include "list.h"
+#include "linked_list.h"
+
 
 using namespace std;
 
@@ -43,6 +45,15 @@ struct mystruct
 
 };
 
+#ifdef LINKED_LIST_H
+template <typename Ty>
+using list_ = linked_list<Ty>;
+#elif defined LIST_H
+template <typename Ty>
+using list_ = list<Ty>;
+#else
+
+#endif
 int main() 
 {
 	/*
@@ -94,7 +105,7 @@ int main()
 	l3.swap(0);
 	*/
 
-	list<mystruct> l;
+	list_<mystruct> l;
 	for (int i = 0; i < 10; i++)
 		l.push_back({});
 	
@@ -127,13 +138,13 @@ int main()
 	cout << l << endl;
 
 	cout << "Create second list with 2 elements : " << endl;
-	list<mystruct> l2;
+	list_<mystruct> l2;
 	for (int i = 0; i < 2; i++)
 		l2.insert({}, 0);
 	cout << l2 << endl;
 
 	cout << "l3 = l + l2 : " << endl;
-	list<mystruct> l3 = l + l2;
+	list_<mystruct> l3 = l + l2;
 	cout << l3;
 	cout << l3.size() << endl;
 

@@ -1,23 +1,24 @@
 #pragma once
-#ifndef LIST_H
-#define LIST_H
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
 
 #include <iostream>
 
 template <typename Ty>
-struct node_t
+struct node_linked_t
 {
-	node_t* next = nullptr;
+	node_linked_t* next = nullptr;
+	node_linked_t* prev = nullptr;
 	Ty* data = nullptr;
 };
 
 template <typename Ty>
-class list
+class linked_list
 {
 public:
-	list();
-	list(const list& l);
-	~list();
+	linked_list();
+	linked_list(const linked_list& l);
+	~linked_list();
 
 	void push_back(const Ty& value);
 	void insert(const Ty& value, size_t index);
@@ -33,18 +34,18 @@ public:
 	int64_t find(const Ty& value);
 
 	Ty& operator[](size_t index);
-	list operator+(const list& l2);
-	list& operator+=(const list& l2);
+	linked_list operator+(const linked_list& l2);
+	linked_list& operator+=(const linked_list& l2);
 
 	template <typename Ty>
-	friend std::ostream& operator<<(std::ostream& out, const list<Ty>& l);
+	friend std::ostream& operator<<(std::ostream& out, const linked_list<Ty>& l);
 
 protected:
-	node_t<Ty>* begin;
+	node_linked_t<Ty>* begin;
 
 private:
 
 };
 
-#include "list.cpp"
-#endif /* LIST_H */
+#include "linked_list.cpp"
+#endif /*LINKED_LIST_H*/
