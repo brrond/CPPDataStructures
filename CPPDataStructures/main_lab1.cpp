@@ -2,8 +2,9 @@
 #include <vector>
 #include <string>
 
-#include "list.h"
-#include "linked_list.h"
+//#include "list.h"
+//#include "linked_list.h"
+#include "circular_linked_list.h"
 
 
 using namespace std;
@@ -52,7 +53,8 @@ using list_ = linked_list<Ty>;
 template <typename Ty>
 using list_ = list<Ty>;
 #else
-
+template <typename Ty>
+using list_ = circular_linked_list<Ty>;
 #endif
 int main() 
 {
@@ -103,8 +105,33 @@ int main()
 	l3.insert(mystruct(), 0);
 	cout << l3.size() << endl;
 	l3.swap(0);
+	
+	
+	cout << "fjekfeje" << 1933583 << endl;
+	list_<mystruct> a;
+	for (int i = 0; i < 10; i++)
+		a.insert({}, i);
+	cout << a.size() << endl;
+	cout << a << endl;
+	a.swap(0);
+
+	cout << a.find({}) << " " << a.find(a[5]) << endl;
+
+	while(a.size() > 0)
+	{
+		a.erase(0);
+	}
+
+	cout << a.size() << endl;
+	a.push_back({});
+	cout << a[0].c_str() << " " << a.size() << endl;
+	a.clear();
+	cout << a.size() << endl;
 	*/
 
+
+
+	///*
 	list_<mystruct> l;
 	for (int i = 0; i < 10; i++)
 		l.push_back({});
@@ -147,6 +174,8 @@ int main()
 	list_<mystruct> l3 = l + l2;
 	cout << l3;
 	cout << l3.size() << endl;
+	
 
+	//*/
 	return 0;
 }

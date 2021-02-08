@@ -55,6 +55,7 @@ void linked_list<Ty>::insert(const Ty& value, size_t index)
 		node_linked_t<Ty>* new_begin = new node_linked_t<Ty>;
 		new_begin->data = new Ty(value);
 		new_begin->next = begin;
+		begin->prev = new_begin;
 		begin = new_begin;
 		return;
 	}
@@ -64,6 +65,7 @@ void linked_list<Ty>::insert(const Ty& value, size_t index)
 	new_el->next = b;
 	new_el->prev = b->prev;
 	b->prev = new_el;
+	new_el->prev->next = new_el;
 	new_el->data = new Ty(value);
 }
 
