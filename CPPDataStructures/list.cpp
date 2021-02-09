@@ -70,6 +70,9 @@ void list<Ty>::erase(size_t index)
 {
 	if (index == 0)
 	{
+		if (begin->data == nullptr)
+			throw "Index out of range";
+
 		node_t<Ty>* d = begin;
 		begin = begin->next;
 		delete d->data;

@@ -74,6 +74,9 @@ void linked_list<Ty>::erase(size_t index)
 {
 	if (index == 0)
 	{
+		if (begin->data == nullptr)
+			throw "Index out of range";
+
 		node_linked_t<Ty>* d = begin;
 		begin = begin->next;
 		begin->prev = nullptr;
