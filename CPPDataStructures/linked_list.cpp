@@ -116,7 +116,9 @@ template<typename Ty>
 size_t linked_list<Ty>::size()
 {
 	size_t s = 0;
-	for (node_linked_t<Ty>* f = begin; f->next != nullptr; f = f->next, s++);
+	for (node_linked_t<Ty>* f = begin; 
+		f->next != nullptr; 
+		f = f->next, s++);
 	return s;
 }
 

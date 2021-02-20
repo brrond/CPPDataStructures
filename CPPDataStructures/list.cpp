@@ -120,7 +120,41 @@ size_t list<Ty>::size()
 template<typename Ty>
 void list<Ty>::swap(size_t index)
 {
-	swap(index, index + 1);
+	node_t<Ty>* b = begin;
+	if (index == 0)
+	{
+		if (b->next == nullptr)
+		{
+			throw "There is no more elements";
+		}
+
+		node_t<Ty>* second = b->next;
+		b->next = second->next;
+		second->next = b;
+		begin = second;
+	}
+	else
+	{
+		index--;
+		while (index-- && b->next != nullptr)
+		{
+			b = b->next;
+		}
+		node_t<Ty>* first, * second;
+		try
+		{
+			first = b->next;
+			second = b->next->next;
+		}
+		catch (...)
+		{
+			throw "There are no more elements";
+		}
+
+		b->next = b->next->next;
+		first->next = second->next;
+		second->next = first;
+	}
 }
 
 template<typename Ty>

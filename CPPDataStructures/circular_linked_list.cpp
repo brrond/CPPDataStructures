@@ -145,12 +145,6 @@ void circular_linked_list<Ty>::clear()
 {
 	node_circular_linked_t<Ty>* p = begin->prev;
 	node_circular_linked_t<Ty>* pb;
-	/*while (begin != nullptr)
-	{
-		begin = begin->next;
-		delete begin->prev->data;
-		delete begin->prev;
-	}*/
 	while (p != begin)
 	{
 		pb = p;
@@ -169,7 +163,8 @@ size_t circular_linked_list<Ty>::size()
 		return 0;
 	size_t s = 0;
 	bool first = true;
-	for (node_circular_linked_t<Ty>* f = begin; f != begin || first; 
+	for (node_circular_linked_t<Ty>* f = begin; 
+		f != begin || first; 
 		f = f->next, s++, first = false);
 	return s;
 }

@@ -190,8 +190,10 @@ int main()
 	*/
 
 	list_<mystruct> l;
+
 	do
 	{
+
 		int menu;
 		cout << "List is : " << endl;
 		cout << l << endl;
@@ -304,15 +306,49 @@ int main()
 		}
 		else if (menu == 6)
 		{
-			list_<mystruct> l2;
-			for (int i = 0; i < 3; i++)
-			{
-				l2.push_back({});
+			cout << "Input(1) or random(0) >>>";
+			int n;
+			int m;
+			try {
+				cin >> n;
+				cout << "Ok, how much elements : ";
+				cin >> m;
+				m = abs(m);
+				if (m == 0)
+					m = 3;
 			}
-			cout << "Ok, will be added this list : " << endl;
-			cout << l2 << endl;
-			l += l2;
-			cout << "Done" << endl;
+			catch (...)
+			{
+				cout << "Try again" << endl;
+				continue;
+			}
+
+			if (n == 0)
+			{
+				list_<mystruct> l2;
+				for (int i = 0; i < m; i++)
+				{
+					l2.push_back({});
+				}
+				cout << "Ok, will be added this list : " << endl;
+				cout << l2 << endl;
+				l += l2;
+				cout << "Done" << endl;
+			}
+			else
+			{
+				list_<mystruct> l2;
+				for (int i = 0; i < m; i++)
+				{
+					mystruct a;
+					cout << "Enter float/float/int : "; cin >> a.a >> *a.b >> a.c;
+					l2.push_back(a);
+				}
+				cout << "Ok, will be added this list : " << endl;
+				cout << l2 << endl;
+				l += l2;
+				cout << "Done" << endl;
+			}
 		}
 		else if (menu == 7)
 		{
