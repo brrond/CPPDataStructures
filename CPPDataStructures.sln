@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPPDataStructures", "CPPDataStructures\CPPDataStructures.vcxproj", "{4EE1238F-0F05-473A-8ED6-32F5D889F3A7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "laboratory_works", "laboratory_works\laboratory_works.vcxproj", "{F5B10B53-8291-47FD-9103-62C251CCFEED}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4EE1238F-0F05-473A-8ED6-32F5D889F3A7} = {4EE1238F-0F05-473A-8ED6-32F5D889F3A7}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +26,14 @@ Global
 		{4EE1238F-0F05-473A-8ED6-32F5D889F3A7}.Release|x64.Build.0 = Release|x64
 		{4EE1238F-0F05-473A-8ED6-32F5D889F3A7}.Release|x86.ActiveCfg = Release|Win32
 		{4EE1238F-0F05-473A-8ED6-32F5D889F3A7}.Release|x86.Build.0 = Release|Win32
+		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Debug|x64.ActiveCfg = Debug|x64
+		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Debug|x64.Build.0 = Debug|x64
+		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Debug|x86.ActiveCfg = Debug|Win32
+		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Debug|x86.Build.0 = Debug|Win32
+		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Release|x64.ActiveCfg = Release|x64
+		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Release|x64.Build.0 = Release|x64
+		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Release|x86.ActiveCfg = Release|Win32
+		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
