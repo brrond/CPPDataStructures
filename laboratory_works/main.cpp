@@ -29,7 +29,8 @@ int main()
 	} while (true);
 #else
 
-	main_lab2();
+	main_lab1();
+	//main_lab2();
 
 #endif
 

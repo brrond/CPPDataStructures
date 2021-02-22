@@ -2,7 +2,7 @@
 //#ifndef STACK_H
 //#define STACK_H
 
-#include "list.h"
+#include "../slist_llist_cllist/list.h"
 
 template <typename Ty, typename base_type = list<Ty>>
 class stack : protected base_type{

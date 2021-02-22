@@ -7,8 +7,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPPDataStructures", "CPPDat
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "laboratory_works", "laboratory_works\laboratory_works.vcxproj", "{F5B10B53-8291-47FD-9103-62C251CCFEED}"
 	ProjectSection(ProjectDependencies) = postProject
+		{CD8EF814-C2BD-42B0-9C9F-354384B3A151} = {CD8EF814-C2BD-42B0-9C9F-354384B3A151}
 		{4EE1238F-0F05-473A-8ED6-32F5D889F3A7} = {4EE1238F-0F05-473A-8ED6-32F5D889F3A7}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "slist_llist_cllist", "slist_llist_cllist\slist_llist_cllist.vcxproj", "{CD8EF814-C2BD-42B0-9C9F-354384B3A151}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +37,14 @@ Global
 		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Release|x64.Build.0 = Release|x64
 		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Release|x86.ActiveCfg = Release|Win32
 		{F5B10B53-8291-47FD-9103-62C251CCFEED}.Release|x86.Build.0 = Release|Win32
+		{CD8EF814-C2BD-42B0-9C9F-354384B3A151}.Debug|x64.ActiveCfg = Debug|x64
+		{CD8EF814-C2BD-42B0-9C9F-354384B3A151}.Debug|x64.Build.0 = Debug|x64
+		{CD8EF814-C2BD-42B0-9C9F-354384B3A151}.Debug|x86.ActiveCfg = Debug|Win32
+		{CD8EF814-C2BD-42B0-9C9F-354384B3A151}.Debug|x86.Build.0 = Debug|Win32
+		{CD8EF814-C2BD-42B0-9C9F-354384B3A151}.Release|x64.ActiveCfg = Release|x64
+		{CD8EF814-C2BD-42B0-9C9F-354384B3A151}.Release|x64.Build.0 = Release|x64
+		{CD8EF814-C2BD-42B0-9C9F-354384B3A151}.Release|x86.ActiveCfg = Release|Win32
+		{CD8EF814-C2BD-42B0-9C9F-354384B3A151}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

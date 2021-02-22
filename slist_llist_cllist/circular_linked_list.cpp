@@ -184,6 +184,7 @@ void circular_linked_list<Ty>::swap(size_t index1, size_t index2)
 	node_circular_linked_t<Ty>* first, * second;
 	size_t f = index1 < index2 ? index1 : index2;
 	size_t s = index1 < index2 ? index2 : index1;
+	s -= f;
 	bool first_i = true;
 	while ((b != begin || first_i) && f--)
 	{

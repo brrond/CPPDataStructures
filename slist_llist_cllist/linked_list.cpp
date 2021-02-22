@@ -4,6 +4,7 @@ template<typename Ty>
 linked_list<Ty>::linked_list()
 {
 	begin = new node_linked_t<Ty>;
+	tail = begin;
 }
 
 template<typename Ty>
@@ -18,6 +19,7 @@ linked_list<Ty>::linked_list(const linked_list& l)
 		d->next->prev = d;
 		d = d->next;
 	}
+	tail = d;
 }
 
 template<typename Ty>
@@ -37,13 +39,10 @@ linked_list<Ty>::~linked_list()
 template<typename Ty>
 void linked_list<Ty>::push_back(const Ty& value)
 {
-	node_linked_t<Ty>* b = begin;
-	while (b->next != nullptr)
-		b = b->next;
-	b->data = new Ty(value);
-	b->next = new node_linked_t<Ty>();
-	b->next->next = nullptr;
-	b->next->prev = b;
+	tail->data = new Ty(value);
+	tail->next = new node_linked_t<Ty>;
+	tail->next->prev = tail;
+	tail = tail->next;
 }
 
 template<typename Ty>
@@ -67,6 +66,11 @@ void linked_list<Ty>::insert(const Ty& value, size_t index)
 	b->prev = new_el;
 	new_el->prev->next = new_el;
 	new_el->data = new Ty(value);
+	
+	if (b == tail)
+	{
+		tail = tail->next;
+	}
 }
 
 template<typename Ty>
@@ -110,6 +114,7 @@ void linked_list<Ty>::clear()
 	}
 	delete begin;
 	begin = new node_linked_t<Ty>;
+	tail = begin;
 }
 
 template<typename Ty>
@@ -137,6 +142,9 @@ void linked_list<Ty>::swap(size_t index1, size_t index2)
 	node_linked_t<Ty>* first, * second;
 	size_t f = index1 < index2 ? index1 : index2;
 	size_t s = index1 < index2 ? index2 : index1;
+
+	s -= f;
+
 	while (b->next != nullptr && f--)
 	{
 		b = b->next;
@@ -217,9 +225,7 @@ linked_list<Ty> linked_list<Ty>::operator+(const linked_list& l2)
 template<typename Ty>
 linked_list<Ty>& linked_list<Ty>::operator+=(const linked_list& l2)
 {
-	node_linked_t<Ty>* b = begin;
-	while (b->next != nullptr)
-		b = b->next;
+	node_linked_t<Ty>* b = tail;
 	node_linked_t<Ty>* b2 = l2.begin;
 	while (b2->next != nullptr)
 	{

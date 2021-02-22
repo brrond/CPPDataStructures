@@ -42,6 +42,7 @@ public:
 
 protected:
 	node_linked_t<Ty>* begin;
+	node_linked_t<Ty>* tail;
 
 private:
 

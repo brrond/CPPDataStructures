@@ -7,9 +7,10 @@
 
 #define DEBUG
 
-//#include "../CPPDataStructures/list.h"
-#include "../CPPDataStructures/linked_list.h"
-//#include "../CPPDataStructures/circular_linked_list.h"
+//#include "../slist_llist_cllist/list.h"
+#include "../slist_llist_cllist/linked_list.h"
+//#include "../slist_llist_cllist/circular_linked_list.h"
+
 
 #include "../CPPDataStructures/stack.h"
 

@@ -166,6 +166,7 @@ void list<Ty>::swap(size_t index1, size_t index2)
 	node_t<Ty>* first, * second;
 	size_t f = index1 < index2 ? index1 : index2;
 	size_t s = index1 < index2 ? index2 : index1;
+	s -= f;
 	while (b->next != nullptr && f--)
 	{
 		b = b->next;
