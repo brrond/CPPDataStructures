@@ -135,8 +135,6 @@ int main_lab1()
 	cout << a.size() << endl;
 	*/
 
-
-
 	/*
 	list_<mystruct> l;
 	for (int i = 0; i < 10; i++)

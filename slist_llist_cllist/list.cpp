@@ -20,6 +20,20 @@ list<Ty>::list(const list& l)
 }
 
 template<typename Ty>
+const list<Ty>& list<Ty>::operator=(const list& l)
+{
+	clear();
+	node_t<Ty>* d = begin;
+	for (node_t<Ty>* b = l.begin; b->next != nullptr; b = b->next)
+	{
+		d->data = new Ty(*b->data);
+		d->next = new node_t<Ty>;
+		d = d->next;
+	}
+	return l;
+}
+
+template<typename Ty>
 list<Ty>::~list()
 {
 	node_t<Ty>* pb = begin;

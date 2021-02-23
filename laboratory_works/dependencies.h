@@ -15,4 +15,4 @@
 #include "../CPPDataStructures/stack.h"
 
 int main_lab1();
-int main_lab2();
+int main_lab2_stack();

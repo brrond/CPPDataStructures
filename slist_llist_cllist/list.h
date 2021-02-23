@@ -18,6 +18,7 @@ public:
 	list();
 	list(const list& l);
 	~list();
+	const list& operator=(const list& l);
 
 	void push_back(const Ty& value);
 	void insert(const Ty& value, size_t index);

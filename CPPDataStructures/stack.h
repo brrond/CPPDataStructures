@@ -1,6 +1,6 @@
 #pragma once
-//#ifndef STACK_H
-//#define STACK_H
+#ifndef STACK_H
+#define STACK_H
 
 #include "../slist_llist_cllist/list.h"
 
@@ -13,12 +13,28 @@ public:
 
 	void clear();
 	size_t size();
-	void push_back(const Ty& data);
+	void push(const Ty& data);
 	void pop();
-	Ty& back();
+	Ty& top();
+
+	Ty min_value();
+	Ty max_value();
+
+	stack create_reverse();
+
+	friend std::ostream& operator<<(std::ostream& out, stack st)
+	{
+		if (st.size() == 0) return out;
+		Ty el = st.top();
+		st.pop();
+		out << st;
+		out << el << " ";
+		return out;
+	}
 
 protected:
 	
+
 private:
 
 
@@ -27,4 +43,4 @@ private:
 
 #include "stack.cpp"
 
-//#endif 
+#endif 
