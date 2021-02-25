@@ -140,7 +140,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_lab1.cpp" />
-    <ClCompile Include="main_lab2_stack.cpp" />
+    <ClCompile Include="main_lab2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies.h" />

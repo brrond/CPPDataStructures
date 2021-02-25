@@ -384,3 +384,125 @@ int main_lab2_stack()
 
 	return 0;
 }
+
+
+int main_lab2_queue()
+{
+	queue<int> a;
+
+	for (int i = 0; i < 10; i++)
+	{
+		a.push(i);
+	}
+
+	do 
+	{
+		string menu_string;
+		int menu = 1000;
+		cout << "List is : ";
+		cout << a << endl;
+		cout << "0) Exit" << endl;
+		cout << "1) Size()" << endl;
+		cout << "2) Average" << endl;
+		cout << "3) Min and Max" << endl;
+		cout << "4) Get {i} element" << endl;
+		cout << "5) Before min" << endl;
+		cout << "6) Push" << endl;
+		cout << "7) Clear" << endl;
+		cout << ">>>";
+		cin >> menu_string;
+
+		try
+		{
+			if (menu_string == "exit")
+			{
+				return 0;
+			}
+			else if (menu_string == "cls")
+			{
+				system("cls");
+			}
+			else
+			{
+				menu = stoi(menu_string);
+			}
+		}
+		catch (...)
+		{
+			cout << "Try again" << endl;
+			continue;
+		}
+
+		if (menu == 0)
+		{
+			return 0;
+		}
+		else if (menu == 1)
+		{
+			cout << "Size : " << a.size() << endl;
+		}
+		else if (menu == 2)
+		{
+			int avg = 0;
+			queue<int> a_cp(a);
+			if (a_cp.size())
+			{
+				while (a_cp.size())
+				{
+					avg += a_cp.front_pop();
+				}
+				cout << "Avg : " << (float)avg / a.size() << endl;
+			}
+			else {
+				cout << "There is no elements" << endl;
+			}
+		}
+		else if (menu == 3)
+		{
+
+		}
+		else if (menu == 6)
+		{
+			cout << "Random(1) or keyboard(0) >>>";
+			string kr; cin >> kr;
+			int kr_i = 1;
+			try
+			{
+				kr_i = stoi(kr);
+			}
+			catch (...)
+			{
+				cout << "Try again" << endl;
+			}
+
+			int n; cout << "How many elements : ";
+			cin >> n;
+
+			if (kr_i == 0)
+			{
+				while (n--)
+				{
+					int value;
+					cout << "Enter value : "; cin >> value;
+					a.push(value);
+				}
+				cout << "Done" << endl;
+				continue;
+			}
+
+			while (n--)
+			{
+				int value = rand() % 100 - 50;
+				a.push(value);
+			}
+			cout << "Done" << endl;
+		}
+		else if (menu == 7)
+		{
+			a.clear();
+		}
+
+	} while (true);
+
+	return 0;
+}
