@@ -459,7 +459,88 @@ int main_lab2_queue()
 		}
 		else if (menu == 3)
 		{
+			queue<int> q(a);
+			if (!q.size())
+			{
+				cout << "There is no elements" << endl;
+				continue;
+			}
+			int min, max;
+			min = max = q.front_pop();
+			while (q.size())
+			{
+				if (q.front() > max)
+				{
+					max = q.front();
+				}
+				else if (q.front() < min)
+				{
+					min = q.front();
+				}
+				q.pop();
+			}
+			cout << "Min : " << min << ", max : " << max << endl;
+		}
+		else if (menu == 4)
+		{
+			cout << "Enter i : ";
+			int i; cin >> i;
+			if (i < 0 || i >= a.size())
+			{
+				cout << "Incorrect input" << endl;
+				continue;
+			}
 
+			queue<int> q(a);
+			for (int j = 0; j < i - 1 && q.size(); j++)
+			{
+				q.pop();
+			}
+
+			if (!q.size())
+			{
+				cout << i << " is out of range" << endl;
+				continue;
+			}
+
+			cout << q.front() << endl;
+		}
+		else if (menu == 5)
+		{
+			if (!a.size())
+			{
+				cout << "There is no elements" << endl;
+				continue;
+			}
+
+			queue<int> q(a);
+			int min = q.front_pop();
+			int min_i = 0;
+			int i = 0;
+			while (q.size())
+			{
+				if (q.front() < min)
+				{
+					min = q.front();
+					min_i = i;
+				}
+				q.pop();
+				i++;
+			}
+
+			if (min_i == 0)
+			{
+				cout << "First element is min" << endl;
+			}
+			else
+			{
+				queue<int> q2(a);
+				while (min_i--)
+				{
+					q2.pop();
+				}
+				cout << q2.front() << endl;
+			}
 		}
 		else if (menu == 6)
 		{
@@ -477,6 +558,7 @@ int main_lab2_queue()
 
 			int n; cout << "How many elements : ";
 			cin >> n;
+			n = abs(n);
 
 			if (kr_i == 0)
 			{
@@ -506,3 +588,5 @@ int main_lab2_queue()
 
 	return 0;
 }
+
+
