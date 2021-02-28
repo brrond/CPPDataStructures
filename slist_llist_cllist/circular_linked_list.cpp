@@ -10,6 +10,7 @@ template<typename Ty>
 circular_linked_list<Ty>::circular_linked_list(const circular_linked_list& l)
 {
 	begin = new node_circular_linked_t<Ty>;
+	if (!l.begin->data) return;
 	node_circular_linked_t<Ty>* d = begin;
 	bool first = true;
 	for (node_circular_linked_t<Ty>* b = l.begin; (b != l.begin || first); b = b->next)

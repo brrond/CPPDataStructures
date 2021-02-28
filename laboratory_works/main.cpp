@@ -11,8 +11,9 @@ int main()
 	{
 		int n;
 		cout << "1) List" << endl;
-		cout << "2) stack" << endl;
+		cout << "2) Stack" << endl;
 		cout << "3) Queue" << endl;
+		cout << "4) Deque" << endl;
 		cout << "What lab do you want to test : ";
 		try 
 		{
@@ -31,15 +32,21 @@ int main()
 		{
 			return main_lab2_stack();
 		}
-		else if(n == 3)
+		else if (n == 3)
 		{
 			return main_lab2_queue();
+		}
+		else if (n == 4)
+		{
+			return main_lab2_deque();
+		}
 	} while (true);
 #else
 
 	//main_lab1();
 	//main_lab2_stack();
-	main_lab2_queue();
+	//main_lab2_queue();
+	main_lab2_deque();
 
 #endif
 

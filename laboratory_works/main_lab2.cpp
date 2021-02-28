@@ -399,7 +399,7 @@ int main_lab2_queue()
 	{
 		string menu_string;
 		int menu = 1000;
-		cout << "List is : ";
+		cout << "Queue is : ";
 		cout << a << endl;
 		cout << "0) Exit" << endl;
 		cout << "1) Size()" << endl;
@@ -589,4 +589,205 @@ int main_lab2_queue()
 	return 0;
 }
 
+
+int get_value(bool rk)
+{
+	//Random(1) keyboard(0)
+	if (rk)
+	{
+		return rand() % 100 - 50;
+	}
+	string n_str;
+	int n = 0;
+	cout << "Enter value : "; cin >> n_str;
+	try
+	{
+		n = stoi(n_str);
+	}
+	catch (...)
+	{
+		int n = rand() % 100 - 50;
+		cout << "Nope. This one will be " << n << endl;
+		return n;
+	}
+	return n;
+}
+
+
+int main_lab2_deque()
+{
+	string input;
+	int menu;
+
+	deque<int> a;
+
+	for (int i = 0; i < 10; i++)
+	{
+		a.push_front(i);
+	}
+
+	do
+	{
+		cout << "Deque : " << a << endl;
+		cout << "1) Clear" << endl;
+		cout << "2) Is empty" << endl;
+		cout << "3) Push front" << endl;
+		cout << "4) Push back" << endl;
+		cout << "5) Front" << endl;
+		cout << "6) Back" << endl;
+		cout << "7) Pop front" << endl;
+		cout << "8) Pop back" << endl;
+		cout << "9) Get by index" << endl;
+		cout << "10) Insert" << endl;		///
+		cout << "0) Exit" << endl;
+		cout << ">>>";
+		cin >> input;
+
+		try
+		{
+			if (input == "exit")
+			{
+				return 0;
+			}
+			else if (input == "cls")
+			{
+				system("cls");
+				continue;
+			}
+			
+			menu = stoi(input);
+		}
+		catch (...)
+		{
+			cout << "Nope" << endl;
+			continue;
+		}
+
+		if (menu == 0)
+		{
+			return 0;
+		}
+		else if (menu == 1)
+		{
+			a.clear();
+		}
+		else if (menu == 2)
+		{
+			cout << "Is empty : " << a.is_empty() << endl;
+		}
+		else if (menu == 3)
+		{
+			bool rk;
+			cout << "Random(1) keyboard(0) > "; cin >> rk;
+			cout << "How many  elements > "; cin >> input;
+			int n;
+			try
+			{
+				n = abs(stoi(input));
+			}
+			catch (...)
+			{
+				cout << "Try again later" << endl;
+				continue;
+			}
+
+			while (n--)
+			{
+				a.push_front(get_value(rk));
+			}
+			cout << "Done" << endl;
+		}
+		else if (menu == 4)
+		{
+			bool rk;
+			cout << "Random(1) keyboard(0) > "; cin >> rk;
+			cout << "How many  elements > "; cin >> input;
+			int n;
+			try
+			{
+				n = abs(stoi(input));
+			}
+			catch (...)
+			{
+				cout << "Try again later" << endl;
+				continue;
+			}
+
+			while (n--)
+			{
+				a.push_back(get_value(rk));
+			}
+			cout << "Done" << endl;
+		}
+		else if (menu == 5)
+		{
+			if (!a.size())
+			{
+				cout << "Deque is empty" << endl;
+				continue;
+			}
+			cout << "Front is : " << a.front() << endl;
+		}
+		else if (menu == 6)
+		{
+			if (!a.size())
+			{
+				cout << "Deque is empty" << endl;
+				continue;
+			}
+			cout << "Back is : " << a.back() << endl;
+		}
+		else if (menu == 7)
+		{
+			if (!a.size())
+			{
+				cout << "There is no elements" << endl;
+				continue;
+			}
+			a.pop_front();
+			cout << "Done" << endl;
+		}
+		else if (menu == 8)
+		{
+			if (!a.size())
+			{
+				cout << "There is no elements" << endl;
+				continue;
+			}
+			a.pop_back();
+			cout << "Done" << endl;
+		}
+		else if (menu == 9)
+		{
+			if (a.is_empty())
+			{
+				cout << "Deque is empty" << endl;
+				continue;
+			}
+			cout << "Enter index > "; int n; cin >> n;
+			try
+			{
+				n = a[n];
+			}
+			catch (...)
+			{
+				cout << "Index out of range" << endl;
+				continue;
+			}
+			cout << "Value is : " << n << endl;
+		}
+		else if (menu == 10)
+		{
+			bool rk;
+			cout << "Random(1) keyboard(0) > "; cin >> rk;
+			cout << "Where do you want to insert value >>>"; int i; cin >> i;
+			a.insert(i, get_value(rk));
+			cout << "Done" << endl;
+		}
+
+	} while (true);
+
+
+	return 0;
+}
 

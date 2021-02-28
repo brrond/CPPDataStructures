@@ -14,7 +14,9 @@
 
 #include "../CPPDataStructures/stack.h"
 #include "../CPPDataStructures/queue.h"
+#include "../CPPDataStructures/deque.h"
 
 int main_lab1();
 int main_lab2_stack();
 int main_lab2_queue();
+int main_lab2_deque();
