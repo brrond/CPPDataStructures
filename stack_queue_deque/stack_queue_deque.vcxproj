@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{4EE1238F-0F05-473A-8ED6-32F5D889F3A7}</ProjectGuid>
-    <RootNamespace>CPPDataStructures</RootNamespace>
+    <ProjectGuid>{49024A7F-616D-4D0A-B670-077CADF8E6A4}</ProjectGuid>
+    <RootNamespace>stackqueuedeque</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -138,18 +138,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="matrix.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="deque.cpp" />
+    <ClCompile Include="queue.cpp" />
+    <ClCompile Include="stack.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="matrix.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClInclude Include="deque.h" />
+    <ClInclude Include="queue.h" />
+    <ClInclude Include="stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

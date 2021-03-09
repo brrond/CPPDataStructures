@@ -12,9 +12,9 @@
 //#include "../slist_llist_cllist/circular_linked_list.h"
 
 
-#include "../CPPDataStructures/stack.h"
-#include "../CPPDataStructures/queue.h"
-#include "../CPPDataStructures/deque.h"
+#include "../stack_queue_deque/stack.h"
+#include "../stack_queue_deque/queue.h"
+#include "../stack_queue_deque/deque.h"
 
 int main_lab1();
 int main_lab2_stack();

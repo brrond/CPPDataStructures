@@ -1,8 +1,10 @@
 #include "dependencies.h"
 
+
+
 using namespace std;
 
-#define star 14159265
+
 
 int main_lab2_stack()
 {
@@ -33,6 +35,8 @@ int main_lab2_stack()
 		cout << "11) Remove max" << endl;	
 		cout << "12) Replace min element with 0" << endl;
 		cout << "13) Push" << endl;
+		cout << "14) Write to file" << endl;
+		cout << "15) Read from file" << endl;
 		cout << ">>>";
 		try
 		{
@@ -45,6 +49,11 @@ int main_lab2_stack()
 			else if (menu_string == "exit")
 			{
 				exit(0);
+			}
+			else if (menu_string == "size")
+			{
+				cout << st.size() << endl;
+				continue;
 			}
 			menu = stoi(menu_string);
 		}
@@ -168,17 +177,18 @@ int main_lab2_stack()
 				mid = st.size() / 2;
 
 			auto st2 = st.create_reverse();
-			st.clear();
 
 			int j = 0;
 			while (st2.size())
 			{
-				st.push(st2.top());
+				cout << st2.top() << " ";
 				st2.pop();
-				if (j == mid)
-					st.push(star);
+				if (j == mid) {
+					cout << "*" << " ";
+				}
 				j++;
 			}
+			cout << endl;
 
 		}
 		else if (menu == 6)
@@ -269,7 +279,7 @@ int main_lab2_stack()
 		{
 			if (st.size())
 			{
-				while (st.size() != 1)
+				while (st.size() > 1)
 				{
 					st.pop();
 				}
@@ -376,14 +386,40 @@ int main_lab2_stack()
 			st.push(n);
 			cout << "Done" << endl;
 		}
-
-
+		else if (menu == 14)
+		{
+			fstream fout;
+			fout.open("file.txt");
+			stack<int> st2 = st.create_reverse();
+			while (st2.size())
+			{
+				fout << st2.top() << " ";
+				st2.pop();
+			}
+			fout.close();
+			cout << "Done" << endl;
+		}
+		else if (menu == 15)
+		{
+			ifstream fin;
+			fin.open("file.txt");
+			while (!fin.eof())
+			{
+				int n; fin >> n;
+				st.push(n);
+			}
+			st.pop();
+			fin.close();
+			cout << "Done" << endl;
+		}
+ 
 
 	} while (true);
 
 
 	return 0;
 }
+
 
 
 int main_lab2_queue()
@@ -409,6 +445,8 @@ int main_lab2_queue()
 		cout << "5) Before min" << endl;
 		cout << "6) Push" << endl;
 		cout << "7) Clear" << endl;
+		cout << "8) Write to file" << endl;
+		cout << "9) Read from file" << endl;
 		cout << ">>>";
 		cin >> menu_string;
 
@@ -492,7 +530,7 @@ int main_lab2_queue()
 			}
 
 			queue<int> q(a);
-			for (int j = 0; j < i - 1 && q.size(); j++)
+			for (int j = 0; j < i && q.size(); j++)
 			{
 				q.pop();
 			}
@@ -583,11 +621,44 @@ int main_lab2_queue()
 		{
 			a.clear();
 		}
+		else if (menu == 8)
+		{
+			fstream fout;
+			fout.open("file.txt");
+			queue<int> q = a;
+			while (q.size())
+			{
+				fout << q.front_pop() << " ";
+			}
+			fout.close();
+			cout << "Done" << endl;
+		}
+		else if (menu == 9)
+		{
+			ifstream fin;
+			fin.open("file.txt");
+			bool first = true;
+			int prev;
+			while (!fin.eof())
+			{
+				int n; fin >> n;
+				if (first) {
+					prev = n;
+					first = false;
+					continue;
+				}
+				a.push(prev);
+				prev = n;
+			}
+			fin.close();
+			cout << "Done" << endl;
+		}
 
 	} while (true);
 
 	return 0;
 }
+
 
 
 int get_value(bool rk)
@@ -614,6 +685,7 @@ int get_value(bool rk)
 }
 
 
+
 int main_lab2_deque()
 {
 	string input;
@@ -638,8 +710,10 @@ int main_lab2_deque()
 		cout << "7) Pop front" << endl;
 		cout << "8) Pop back" << endl;
 		cout << "9) Get by index" << endl;
-		cout << "10) Insert" << endl;		///
+		cout << "10) Insert" << endl;		
 		cout << "0) Exit" << endl;
+		cout << "11) Write to file" << endl;
+		cout << "12) Read from file" << endl;
 		cout << ">>>";
 		cin >> input;
 
@@ -784,10 +858,37 @@ int main_lab2_deque()
 			a.insert(i, get_value(rk));
 			cout << "Done" << endl;
 		}
+		else if (menu == 11)
+		{
+			fstream fout;
+			fout.open("file.txt");
+			deque<int> dq = a;
+			while (dq.size())
+			{
+				fout << dq.front() << " ";
+				dq.pop_front();
+			}
+			fout.close();
+			cout << "Done" << endl;
+			}
+		else if (menu == 12)
+		{
+			ifstream fin;
+			fin.open("file.txt");
+			while (!fin.eof())
+			{
+				int n; fin >> n;
+				a.push_back(n);
+			}
+			fin.close();
+			a.pop_back();
+			cout << "Done" << endl;
+		}
 
 	} while (true);
 
 
 	return 0;
 }
+
 
