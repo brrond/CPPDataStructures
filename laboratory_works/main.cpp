@@ -47,6 +47,7 @@ int main()
 	//main_lab2_stack();
 	//main_lab2_queue();
 	//main_lab2_deque();
+	main_lab3();
 
 #endif
 

@@ -16,7 +16,11 @@
 #include "../stack_queue_deque/queue.h"
 #include "../stack_queue_deque/deque.h"
 
+
+#include "../CPPDataStructures/binary_tree.h"
+
 int main_lab1();
 int main_lab2_stack();
 int main_lab2_queue();
 int main_lab2_deque();
+int main_lab3();
