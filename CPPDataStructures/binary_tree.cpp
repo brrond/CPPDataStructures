@@ -9,19 +9,54 @@ binary_tree_node<T>::binary_tree_node()
 template<typename T>
 binary_tree_node<T>::binary_tree_node(T data)
 {
-	data = new T(data);
+	this->data = new T(data);
 }
 
 template<typename T>
 binary_tree_node<T>::binary_tree_node(const binary_tree_node& btn)
 {
-	// I should do this one
+	if (btn.data)
+		data = new T(*btn.data);
+	if(btn.left)
+		left = new binary_tree_node(*btn.left);
+	if (btn.right)
+		right = new binary_tree_node(*btn.right);
 }
 
 template<typename T>
 binary_tree_node<T>::~binary_tree_node()
 {
-	// And this one
+	if (left)
+		delete left;
+	if (right)
+		delete right;
+	if (data)
+		delete data;
+}
+
+template<typename T>
+void binary_tree_node<T>::insert(T data)
+{
+	if (!this->data)
+		this->data = new T(data);
+	if (data <= *this->data)
+	{
+		if (left)
+		{
+			left->insert(data);
+			return;
+		}
+		left = new binary_tree_node<T>(data);
+	}
+	else
+	{
+		if (right)
+		{
+			right->insert(data);
+			return;
+		}
+		right = new binary_tree_node<T>(data);
+	}
 }
 
 template<typename T>
@@ -75,9 +110,9 @@ void binary_tree_node<T>::symmetric(binary_tree_node* btn, _Func func)
 {
 	if (btn)
 	{
-		post_order(btn->left, func);
+		symmetric(btn->left, func);
 		func(*btn->data);
-		post_order(btn->right, func);
+		symmetric(btn->right, func);
 	}
 }
 
@@ -92,18 +127,20 @@ T& binary_tree_node<T>::get_data()
 template<typename T>
 void binary_tree_node<T>::set_data(T data)
 {
+	if (this->data)
+		delete this->data;
 	this->data = new T(data);
 }
 
-template<typename T>
-binary_tree_node<T>* binary_tree_node<T>::get_left()
-{
-	return left;
-}
-
-template<typename T>
-binary_tree_node<T>* binary_tree_node<T>::get_right()
-{
-	return right;
-}
+//template<typename T>
+//binary_tree_node<T>* binary_tree_node<T>::get_left()
+//{
+//	return left;
+//}
+//
+//template<typename T>
+//binary_tree_node<T>* binary_tree_node<T>::get_right()
+//{
+//	return right;
+//}
 
