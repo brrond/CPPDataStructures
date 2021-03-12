@@ -32,12 +32,12 @@ public:
 	template <typename _Func>
 	static void symmetric(binary_tree_node* btn, _Func func);
 
-	void clear(); //
+	void clear();
 
-	void clear_left(); //
-	void clear_right(); //
+	void clear_left();
+	void clear_right();
 
-	void erase(); //
+	void erase();
 
 	T& get_data();
 	void set_data(T data);
@@ -47,10 +47,13 @@ public:
 
 	binary_tree_node* left = nullptr;
 	binary_tree_node* right = nullptr;
+	binary_tree_node* parent = nullptr;
 
 protected:
 	//binary_tree_node* left = nullptr;
 	//binary_tree_node* right = nullptr;
+	
+	static binary_tree_node* min(binary_tree_node*);
 
 private:
 	T* data = nullptr;

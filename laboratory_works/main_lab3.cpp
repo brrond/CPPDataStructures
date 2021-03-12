@@ -10,18 +10,48 @@ int main_lab3()
 	// 100
 	binary_tree_node<int> root(100);
 	
-	for (int i = 95; i <= 105; i++)
-	{
-		if (i == 102)
-			continue;
-		root.insert(i);
-	}
+	root.insert(99);
+	root.insert(98);
+	root.insert(98);
+	root.insert(110);
+	root.insert(108);
+	root.insert(111);
+	root.insert(103);
+	root.insert(105);
+	root.insert(105);
+	root.insert(106);
 
 	root.pre_order(f);
 	cout << endl;
 
-	root.insert(102);
+	cout << root.left->left->left->get_data();
+	cout << endl;
+	root.left->left->left->erase();
+
+	root.left->left->erase();
 	root.pre_order(f);
+	cout << endl;
+
+	root.right->left->left->erase();
+	root.pre_order(f);
+	cout << endl;
+
+	cout << root.right->left->left->get_data();
+	cout << endl;
+
+	root.right->left->erase();
+	cout << root.right->left->get_data() << endl;
+	root.pre_order(f);
+	cout << endl;
+	cout << root.right->left->get_data() << endl;
+
+	root.right->erase();
+	root.pre_order(f);
+	cout << endl;
+
+	root.erase();
+	root.pre_order(f);
+	cout << endl;
 
 
 	/*// 10 20
