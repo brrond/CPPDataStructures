@@ -9,7 +9,7 @@ public:
 	binary_tree_node(const binary_tree_node& btn);
 	~binary_tree_node();
 
-	void insert(T data);
+	binary_tree_node* insert(T data);
 
 	// For next three functions we pass some function func
 	//and it'll work for every element
@@ -42,6 +42,8 @@ public:
 	T& get_data();
 	void set_data(T data);
 
+	size_t amount_of_leafs();
+
 	//binary_tree_node* get_left();
 	//binary_tree_node* get_right();
 
@@ -54,9 +56,12 @@ protected:
 	//binary_tree_node* right = nullptr;
 	
 	static binary_tree_node* min(binary_tree_node*);
+	static binary_tree_node* max(binary_tree_node*);
+
+	T* data = nullptr;
 
 private:
-	T* data = nullptr;
+	
 };
 
 #include "binary_tree.cpp"

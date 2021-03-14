@@ -49,33 +49,33 @@ binary_tree_node<T>::~binary_tree_node()
 }
 
 template<typename T>
-void binary_tree_node<T>::insert(T data)
+binary_tree_node<T>* binary_tree_node<T>::insert(T data)
 {
 	if (!this->data) 
 	{
 		this->data = new T(data);
-		return;
+		return this;
 	}
 
 	if (data <= *this->data)
 	{
 		if (left)
 		{
-			left->insert(data);
-			return;
+			return left->insert(data);
 		}
 		left = new binary_tree_node<T>(data);
 		left->parent = this;
+		return left;
 	}
 	else
 	{
 		if (right)
 		{
-			right->insert(data);
-			return;
+			return right->insert(data);
 		}
 		right = new binary_tree_node<T>(data);
 		right->parent = this;
+		return right;
 	}
 }
 
@@ -83,7 +83,8 @@ template<typename T>
 template<typename _Func>
 void binary_tree_node<T>::pre_order(_Func func)
 {
-	pre_order(this, func);
+	if(data)
+		pre_order(this, func);
 }
 
 template<typename T>
@@ -102,7 +103,8 @@ template<typename T>
 template<typename _Func>
 void binary_tree_node<T>::post_order(_Func func)
 {
-	post_order(this, func);
+	if(data)
+		post_order(this, func);
 }
 
 template<typename T>
@@ -121,7 +123,8 @@ template<typename T>
 template<typename _Func>
 void binary_tree_node<T>::symmetric(_Func func)
 {
-	symmetric(this, func);
+	if(data)
+		symmetric(this, func);
 }
 
 template<typename T>
@@ -150,7 +153,10 @@ void binary_tree_node<T>::clear()
 		right = nullptr;
 	}
 	if (data)
+	{
 		delete data;
+		data = nullptr;
+	}
 
 	if (parent)
 	{
@@ -180,10 +186,16 @@ void binary_tree_node<T>::clear_right()
 template<typename T>
 void binary_tree_node<T>::erase()
 {
+	if (!data)
+		return;
+
 	if (left == nullptr && right == nullptr)
 	{
 		if (data)
+		{
 			delete data;
+			data = nullptr;
+		}
 		if (parent)
 		{
 			if (parent->left == this)
@@ -197,15 +209,32 @@ void binary_tree_node<T>::erase()
 		if (data)
 			delete data;
 		//data = new T(*right->data);
-		right->parent = parent;
 		if (parent)
 		{
+			right->parent = parent;
 			if (parent->left == this)
 				parent->left = right;
 			else
 				parent->right = right;
 		}
+		else
+		{
+			data = new T(*right->data);
+			binary_tree_node* tmp = right;
+			left = right->left;
+			right = right->right;
+			tmp->left = nullptr;
+			tmp->right = nullptr;
+			tmp->parent = nullptr;
+			tmp->erase();
 
+			if (right)
+				right->parent = this;
+			if (left)
+				left->parent = this;
+
+
+		}
 	}
 	else if (right == nullptr)
 	{
@@ -221,20 +250,48 @@ void binary_tree_node<T>::erase()
 		if (data)
 			delete data;
 		//data = new T(*right->data);
-		left->parent = parent;
 		if (parent)
 		{
+			left->parent = parent;
 			if (parent->left == this)
 				parent->left = left;
 			else
 				parent->right = left;
 		}
+		else
+		{
+			data = new T(*left->data);
+			binary_tree_node* tmp = left;
+			right = left->right;
+			left = left->left;
+			tmp->left = nullptr;
+			tmp->right = nullptr;
+			tmp->parent = nullptr;
+			tmp->erase();
+
+			if (right)
+				right->parent = this;
+			if (left)
+				left->parent = this;
+				
+		}
 	}
 	else
 	{
-		binary_tree_node* tmp = min(this->right);
-		data = new T(*tmp->data);
-		tmp->erase();
+		binary_tree_node* tmp = nullptr;
+		if (right)
+			tmp = min(this->right);
+		else if (left)
+			tmp = max(this->left);
+		else
+			tmp = nullptr;
+		if (tmp)
+		{
+			data = new T(*tmp->data);
+			tmp->erase();
+		}
+		else
+			data = nullptr;
 	}
 
 }
@@ -256,11 +313,30 @@ void binary_tree_node<T>::set_data(T data)
 }
 
 template<typename T>
+size_t binary_tree_node<T>::amount_of_leafs()
+{
+	size_t l = 0, r = 0;
+	if (left)
+		l = left->amount_of_leafs();
+	if (right)
+		r = right->amount_of_leafs();
+	return l + r + (1 ? (left == right && right == nullptr) : 0);
+}
+
+template<typename T>
 binary_tree_node<T>* binary_tree_node<T>::min(binary_tree_node* r)
 {
 	if (r->left)
 		return min(r->left);
 	return r;
+}
+
+template<typename T>
+binary_tree_node<T>* binary_tree_node<T>::max(binary_tree_node* l)
+{
+	if (l->right)
+		return max(l->right);
+	return l;
 }
 
 //template<typename T>

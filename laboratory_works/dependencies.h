@@ -18,9 +18,11 @@
 
 
 #include "../CPPDataStructures/binary_tree.h"
+#include "../CPPDataStructures/red_black_tree.h"
 
 int main_lab1();
 int main_lab2_stack();
 int main_lab2_queue();
 int main_lab2_deque();
-int main_lab3();
+int main_lab3_binary_search_tree();
+int main_lab3_red_black_tree();
