@@ -42,6 +42,15 @@ public:
 
 	static void rotate_right(red_black_tree_node* rbt);
 
+	size_t amount_of_leafs()
+	{
+		size_t l = 0, r = 0;
+		if (left)
+			l = left->amount_of_leafs();
+		if (right)
+			r = right->amount_of_leafs();
+		return l + r + (1 ? (left == right && right == nullptr) : 0);
+	}
 
 	red_black_tree_node* left = nullptr;
 	red_black_tree_node* right = nullptr;

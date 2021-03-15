@@ -254,6 +254,8 @@ void red_black_tree_node<T>::erase()
 			// child don't have left sb
 			
 			child->left = left;
+			if (left)
+				left->parent = child;
 		}
 		else if (left)
 		{
@@ -261,6 +263,8 @@ void red_black_tree_node<T>::erase()
 			// here right is empty
 
 			child->right = right;
+			if (right)
+				right->parent = child;
 		}
 		else
 			child = nullptr;
@@ -298,14 +302,20 @@ void red_black_tree_node<T>::erase()
 		// It's not working. I'm sure
 
 		if (this->data)
+		{
 			delete this->data;
+			this->data = nullptr;
+		}
 
-		erase_fixup(parent);
-		if (parent->left == this)
-			parent->left = nullptr;
-		else
-			parent->right = nullptr;
-		delete this; //
+		if (parent)
+		{
+			erase_fixup(parent);
+			if (parent->left == this)
+				parent->left = nullptr;
+			else
+				parent->right = nullptr;
+		}
+		//delete this; //
 		return;
 	}
 

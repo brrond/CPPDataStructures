@@ -95,8 +95,6 @@ struct superstudent : student
 
 };
 
-//red_black_tree_node
-
 int main_lab3_binary_search_tree()
 {
 	cout << "Binary tree test" << 1431430 << endl;
@@ -205,6 +203,8 @@ int main_lab3_binary_search_tree()
 		else
 			cout << "9) Compare by name" << endl;
 		cout << "10) Insert student" << endl;
+		cout << "11) Write to file" << endl;
+		cout << "12) Read from file" << endl;
 
 		cout << ">>>";
 		string menu_string;
@@ -366,7 +366,79 @@ int main_lab3_binary_search_tree()
 			}
 			cout << "Done" << endl;
 		}
-		
+		else if (menu == 11) 
+		{
+			if (cmp_by_number)
+			{
+				int size = 0;
+				root.pre_order([ &size ](student st) { size++; });
+				fstream fout;
+				fout.open("file.txt");
+				fout << size << endl;
+				root.pre_order([&fout](superstudent st) {
+					fout << st.name << endl << st.number << endl << st.group << endl;
+					});
+				fout.close();
+			}
+			else
+			{
+				int size = 0;
+				root.pre_order([ &size ](student st) { size++; });
+				fstream fout;
+				fout.open("file.txt");
+				fout << size << endl;
+				root.pre_order([&fout](student st) {
+					fout << st.name << endl << st.number << endl << st.group << endl;
+					});
+				fout.close();
+			}
+		}
+		else if (menu == 12)
+		{
+			if (cmp_by_number)
+			{
+				ifstream fin;
+				fin.open("file.txt");
+				superstudent tmp;
+				int size;
+				string tmp_str;
+				fin >> tmp_str;
+				size = stoi(tmp_str);
+				getline(fin, tmp_str);
+				while (size--)
+				{
+					getline(fin, tmp.name);
+					fin >> tmp.number >> tmp.group;
+					getline(fin, tmp_str);
+					root.insert(tmp);
+				}
+				fin.close();
+			}
+			else
+			{
+				ifstream fin;
+				fin.open("file.txt");
+				student tmp;
+				int size;
+				string tmp_str;
+				fin >> tmp_str;
+				size = stoi(tmp_str);
+				getline(fin, tmp_str);
+				while(size--)
+				{
+					getline(fin, tmp.name);
+					fin >> tmp.number >> tmp.group;
+					getline(fin, tmp_str);
+					root.insert(tmp);
+				}
+				fin.close();
+			}
+
+		}
+
+
+
+
 		cout << endl;
 	} 	while (true);
 
@@ -378,7 +450,79 @@ int main_lab3_red_black_tree()
 {
 	cout << "Test" << 11 << endl;
 	
-	red_black_tree_node<int>* root = new red_black_tree_node<int>();
+	/*
+	else if (menu == 11) 
+		{
+			if (cmp_by_number)
+			{
+				int size = 0;
+				root.pre_order([ &size ](student st) { size++; });
+				fstream fout;
+				fout.open("file.txt");
+				fout << size << endl;
+				root.pre_order([&fout](superstudent st) {
+					fout << st.name << endl << st.number << endl << st.group << endl;
+					});
+				fout.close();
+			}
+			else
+			{
+				int size = 0;
+				root.pre_order([ &size ](student st) { size++; });
+				fstream fout;
+				fout.open("file.txt");
+				fout << size << endl;
+				root.pre_order([&fout](student st) {
+					fout << st.name << endl << st.number << endl << st.group << endl;
+					});
+				fout.close();
+			}
+		}
+		else if (menu == 12)
+		{
+			if (cmp_by_number)
+			{
+				ifstream fin;
+				fin.open("file.txt");
+				superstudent tmp;
+				int size;
+				string tmp_str;
+				fin >> tmp_str;
+				size = stoi(tmp_str);
+				getline(fin, tmp_str);
+				while (size--)
+				{
+					getline(fin, tmp.name);
+					fin >> tmp.number >> tmp.group;
+					getline(fin, tmp_str);
+					root.insert(tmp);
+				}
+				fin.close();
+			}
+			else
+			{
+				ifstream fin;
+				fin.open("file.txt");
+				student tmp;
+				int size;
+				string tmp_str;
+				fin >> tmp_str;
+				size = stoi(tmp_str);
+				getline(fin, tmp_str);
+				while(size--)
+				{
+					getline(fin, tmp.name);
+					fin >> tmp.number >> tmp.group;
+					getline(fin, tmp_str);
+					root.insert(tmp);
+				}
+				fin.close();
+			}
+
+		}
+	*/
+
+	/*red_black_tree_node<int>* root = new red_black_tree_node<int>();
 	//root->insert(100);
 	//root->insert(120);
 	//root->insert(140);
@@ -424,6 +568,149 @@ int main_lab3_red_black_tree()
 	cout << "Final : " << endl;
 	root->pre_order_with_color([](int a, COLOR cl)
 		{cout << a << " " << cl << endl; });
+	//*/
+
+	auto print_function = [](student st, COLOR cl) {
+
+		cout << st.name << " " << st.number << " " << st.group;
+		cout << " ";
+		if (cl == BLACK)
+		{
+			cout << "BLACK" << endl;
+		}
+		else
+		{
+			cout << "RED" << endl;
+		}
+
+	};
+
+	red_black_tree_node<student> *root = new red_black_tree_node<student>;
+
+	root->insert({ "John Kalligan", 111, 101 });
+	root->insert({ "Frank Malcow", 112, 101 });
+	root->insert({ "SuperDuude", 110, 102 });
+	root->insert({ "SuperWoman", 90, 102 });
+
+	string menu_string;
+	int menu_int;
+
+	do
+	{
+		cout << "Tree is : " << endl;
+		root->pre_order_with_color(print_function);
+		cout << "1) Print in backward" << endl;
+		cout << "2) Print in symmetric" << endl;
+		cout << "3) Amount of leafs " << endl;
+		cout << "4) Insert student" << endl;
+		cout << "5) Erase root" << endl;
+		cout << "6) Write to file" << endl;
+		cout << "7) Read from file" << endl;
+		cout << ">>>";
+
+		try
+		{
+			cin >> menu_string;
+			if (menu_string == "exit")
+				return 0;
+			else if (menu_string == "cls" || menu_string == "clear")
+			{
+				system("cls");
+				continue;
+			}
+
+			menu_int = stoi(menu_string);
+		}
+		catch (...)
+		{
+			cout << "Nope" << endl;
+			continue;
+		}
+
+		if (menu_int == 1)
+		{
+			root->post_order_with_color(print_function);
+			cout << "Done" << endl;
+		}
+		else if (menu_int == 2)
+		{
+			root->symmetric_with_color(print_function);
+			cout << "Done" << endl;
+		}
+		else if (menu_int == 3)
+		{
+			cout << "Amount of leafs : " << root->amount_of_leafs() << endl;
+		}
+		else if (menu_int == 4)
+		{
+			student st;
+			cout << "Enter student name : ";
+			getline(cin, menu_string);
+			getline(cin, st.name);
+			cout << "Enter student number : ";
+			cin >> st.number;
+			cout << "Enter student gorup : ";
+			cin >> st.group;
+			root->insert(st);
+		}
+		else if (menu_int == 5)
+		{
+			if (root->left || root->right)
+			{
+				red_black_tree_node<student>* tmp = 
+					(root->left) ? root->left : root->right;
+				root->erase();
+				root = tmp;
+				while (root->parent)
+				{
+					root = root->parent;
+				}
+			}
+			else
+			{
+				root->erase();
+			}
+		}
+		else if (menu_int == 6)
+		{
+			int size = 0;
+			root->pre_order([&size](student st) { size++; });
+			fstream fout;
+			fout.open("file.txt");
+			fout << size << endl;
+			root->pre_order([&fout](student st) {
+				fout << st.name << endl << st.number << endl << st.group << endl;
+				});
+			fout.close();
+		}
+		else if (menu_int == 7)
+		{
+			ifstream fin;
+			fin.open("file.txt");
+			student tmp;
+			int size;
+			string tmp_str;
+			fin >> tmp_str;
+			size = stoi(tmp_str);
+			getline(fin, tmp_str);
+			while (size--)
+			{
+				getline(fin, tmp.name);
+				fin >> tmp.number >> tmp.group;
+				getline(fin, tmp_str);
+				root->insert(tmp);
+			}
+			fin.close();
+		}
+
+
+
+		cout << endl;
+	} while (true);
+
+
+
+
 
 	return 0;
 }
