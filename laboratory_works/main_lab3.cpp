@@ -410,7 +410,7 @@ int main_lab3_binary_search_tree()
 					getline(fin, tmp.name);
 					fin >> tmp.number >> tmp.group;
 					getline(fin, tmp_str);
-					root.insert(tmp);
+					root2.insert(tmp);
 				}
 				fin.close();
 			}

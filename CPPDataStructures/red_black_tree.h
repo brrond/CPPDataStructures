@@ -84,6 +84,20 @@ protected:
 
 	}
 
+	static red_black_tree_node* min(red_black_tree_node* r)
+	{
+		if (r->left)
+			return min(r->left);
+		return r;
+	}
+
+	static red_black_tree_node* max(red_black_tree_node* l)
+	{
+		if (l->right)
+			return max(l->right);
+		return l;
+	}
+
 private:
 	void get_links_from_base()
 	{

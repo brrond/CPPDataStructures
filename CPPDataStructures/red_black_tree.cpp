@@ -30,8 +30,6 @@ red_black_tree_node<T>::~red_black_tree_node()
 template<typename T>
 void red_black_tree_node<T>::insert(T data)
 {
-
-	// Maybe here will be error because of down cast. Yes, it is
 	red_black_tree_node* new_node = nullptr;
 	bool insert_to_this = true;
 
