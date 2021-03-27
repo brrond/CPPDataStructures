@@ -95,6 +95,120 @@ struct superstudent : student
 
 };
 
+void print(binary_tree_node<student> *temp, int l) {
+	if (temp != nullptr) {
+		print(temp->right, l + 1);
+		try {
+			for (int i = 0; i < l; i++) cout << "        ";
+			printf("%5s", temp->get_data().name.c_str());
+			cout << endl;
+			for (int i = 0; i < l; i++) cout << "        ";
+			printf("%5d", temp->get_data().number);
+			cout << endl;
+			for (int i = 0; i < l; i++) cout << "        ";
+			printf("%5d", temp->get_data().group);
+			cout << endl;
+		}
+		catch (...)
+		{
+			cout << endl;
+		}
+		print(temp->left, l + 1);
+	}
+	else
+		cout << endl;
+}
+
+void elegant_print(binary_tree_node<student>* tmp, int l, FILE* f = nullptr)
+{
+	bool del_file = false;
+	if (f == nullptr) 
+	{
+		del_file = true;
+		f = fopen("special_tree.txt", "w");
+	}
+
+	if (tmp != nullptr) {
+		elegant_print(tmp->right, l + 1, f);
+		try {
+			//fprintf(f, )
+			for (int i = 0; i < l; i++)fprintf(f, "        ");
+			fprintf(f, "%5s\n", tmp->get_data().name.c_str());
+			for (int i = 0; i < l; i++) fprintf(f, "        ");
+			fprintf(f, "%5d\n", tmp->get_data().number);
+			for (int i = 0; i < l; i++) fprintf(f, "        ");
+			fprintf(f, "%5d\n", tmp->get_data().group);
+		}
+		catch (...)
+		{
+
+		}
+		elegant_print(tmp->left, l + 1, f);
+	}
+	else
+		fprintf(f, "\n");
+
+	if (del_file)
+	{
+		fclose(f);
+	}
+}
+
+void print(binary_tree_node<superstudent>* temp, int l) {
+	if (temp != nullptr) {
+		print(temp->right, l + 1);
+		try {
+			for (int i = 0; i < l; i++) cout << "        ";
+			printf("%5s", temp->get_data().name.c_str());
+			cout << endl;
+			for (int i = 0; i < l; i++) cout << "        ";
+			printf("%5d", temp->get_data().number);
+			cout << endl;
+			for (int i = 0; i < l; i++) cout << "        ";
+			printf("%5d", temp->get_data().group);
+			cout << endl;
+		}
+		catch (...)
+		{
+			cout << endl;
+		}
+		print(temp->left, l + 1);
+	}
+	else
+		cout << endl;
+}
+
+void print(red_black_tree_node<student>* temp, int l) {
+	if (temp != nullptr) 
+	{
+		print(temp->right, l + 1);
+		try {
+			for (int i = 0; i < l; i++) cout << "        ";
+			if (temp->color == 0) {
+				cout << "R  ";
+			}
+			else {
+				cout << "B  ";
+			}
+			printf("%5s", temp->get_data().name.c_str());
+			cout << endl;
+			for (int i = 0; i < l; i++) cout << "        ";
+			printf("%5d", temp->get_data().number);
+			cout << endl;
+			for (int i = 0; i < l; i++) cout << "        ";
+			printf("%5d", temp->get_data().group);
+			cout << endl;
+		}
+		catch (...)
+		{
+			cout << endl;
+		}
+		print(temp->left, l + 1);
+	}
+	else
+		cout << endl;
+}
+
 int main_lab3_binary_search_tree()
 {
 	cout << "Binary tree test" << 1431430 << endl;
@@ -107,7 +221,7 @@ int main_lab3_binary_search_tree()
 	/*
 	// 100
 	binary_tree_node<int> root(100);
-	
+
 	root.insert(99);
 	root.insert(98);
 	root.insert(98);
@@ -189,7 +303,7 @@ int main_lab3_binary_search_tree()
 			root2.pre_order(print_function);
 		else
 			root.pre_order(print_function);
-		
+
 		cout << "1) Avg by  number" << endl;
 		cout << "2) Print in backward" << endl;
 		cout << "3) Print in symmetric" << endl;
@@ -205,6 +319,17 @@ int main_lab3_binary_search_tree()
 		cout << "10) Insert student" << endl;
 		cout << "11) Write to file" << endl;
 		cout << "12) Read from file" << endl;
+		cout << "13) Write to file but elegant" << endl;
+
+
+		if (!cmp_by_number)
+		{
+			print(&root, 0);
+		}
+		else
+		{
+			print(&root2, 0);
+		}
 
 		cout << ">>>";
 		string menu_string;
@@ -435,7 +560,10 @@ int main_lab3_binary_search_tree()
 			}
 
 		}
-
+		else if (menu == 13)
+		{
+		elegant_print(&root, 0);
+		}
 
 
 
@@ -606,6 +734,9 @@ int main_lab3_red_black_tree()
 		cout << "5) Erase root" << endl;
 		cout << "6) Write to file" << endl;
 		cout << "7) Read from file" << endl;
+
+		print(root, 0);
+
 		cout << ">>>";
 
 		try

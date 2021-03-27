@@ -56,9 +56,11 @@ public:
 	red_black_tree_node* right = nullptr;
 	red_black_tree_node* parent = nullptr;
 
+	COLOR color = RED;
+
 protected:
 
-	COLOR color = RED;
+	
 
 	static red_black_tree_node* grandparent(red_black_tree_node* rbt);
 	

@@ -53,7 +53,7 @@ int main()
 	//main_lab2_queue();
 	//main_lab2_deque();
 	//main_lab3_binary_search_tree();
-	main_lab3_red_black_tree();
+	//main_lab3_red_black_tree();
 
 #endif
 

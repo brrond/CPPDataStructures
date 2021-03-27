@@ -1,5 +1,7 @@
 #pragma once
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -17,8 +19,8 @@
 #include "../stack_queue_deque/deque.h"
 
 
-#include "../CPPDataStructures/binary_tree.h"
-#include "../CPPDataStructures/red_black_tree.h"
+#include "../binary_trees/binary_tree.h"
+#include "../binary_trees/red_black_tree.h"
 
 int main_lab1();
 int main_lab2_stack();

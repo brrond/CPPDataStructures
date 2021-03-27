@@ -246,26 +246,31 @@ void red_black_tree_node<T>::erase()
 	red_black_tree_node<T>* child = nullptr;
 	if (left && right)
 	{
-		if (right)
-		{
-			child = static_cast<red_black_tree_node<T>*>(this->min(this->right));
-			// child don't have left sb
-			
-			child->left = left;
-			if (left)
-				left->parent = child;
-		}
-		else if (left)
-		{
-			child = static_cast<red_black_tree_node<T>*>(this->max(this->left));
-			// here right is empty
+		//if (right)
+		//{
+		//	child = static_cast<red_black_tree_node<T>*>(this->min(this->right));
+		//	// child don't have left sb
+		//	
+		//	child->left = left;
+		//	if (left)
+		//		left->parent = child;
+		//}
+		//else if (left)
+		//{
+		//	child = static_cast<red_black_tree_node<T>*>(this->max(this->left));
+		//	// here right is empty
 
-			child->right = right;
-			if (right)
-				right->parent = child;
-		}
-		else
-			child = nullptr;
+		//	child->right = right;
+		//	if (right)
+		//		right->parent = child;
+		//}
+		//else
+		//	child = nullptr;
+		T tmp = *this->data;
+		*this->data = *right->data;
+		*right->data = tmp;
+		right->erase();
+		return;
 
 	}
 	else if (left)
