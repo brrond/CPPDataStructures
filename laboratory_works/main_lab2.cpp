@@ -48,7 +48,7 @@ int main_lab2_stack()
 			}
 			else if (menu_string == "exit")
 			{
-				exit(0);
+				return 0;
 			}
 			else if (menu_string == "size")
 			{

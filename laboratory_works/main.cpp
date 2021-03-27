@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
 
-#ifndef DEBUG
+#if (MODE == 1)
 	do
 	{
 		int n;
@@ -18,6 +18,7 @@ int main()
 		cout << "6) Red black tree" << endl;
 		cout << "7) 4th lab" << endl;
 		cout << "What lab do you want to test : ";
+
 		try 
 		{
 			cin >> n;
@@ -27,36 +28,22 @@ int main()
 			cout << "Try again" << endl;
 		}
 
-		if (n == 1)
+		switch (n)
 		{
-			return main_lab1();
+		case 1: return main_lab1();
+		case 2: return main_lab2_stack();
+		case 3: return main_lab2_queue();
+		case 4: return main_lab2_deque();
+		case 5: return main_lab3_binary_search_tree();
+		case 6: return main_lab3_red_black_tree();
+		case 7: return main_lab4();
+		case 8:
+		default:
+			break;
 		}
-		else if (n == 2)
-		{
-			return main_lab2_stack();
-		}
-		else if (n == 3)
-		{
-			return main_lab2_queue();
-		}
-		else if (n == 4)
-		{
-			return main_lab2_deque();
-		}
-		else if (n == 5)
-		{
-			return main_lab3_binary_search_tree();
-		}
-		else if (n == 6)
-		{
-			return main_lab3_red_black_tree();
-		}
-		else if (n == 7)
-		{
-			return main_lab4();
-		}
+
 	} while (true);
-#else
+#elif (MODE == 0)
 
 	//main_lab1();
 	//main_lab2_stack();
@@ -66,8 +53,58 @@ int main()
 	//main_lab3_red_black_tree();
 	main_lab4();
 
-#endif
+#else
+	do
+	{
+		int n;
+		cout << "1) List" << endl;
+		cout << "2) Stack" << endl;
+		cout << "3) Queue" << endl;
+		cout << "4) Deque" << endl;
+		cout << "5) Binary search tree" << endl;
+		cout << "6) Red black tree" << endl;
+		cout << "7) 4th lab" << endl;
+		cout << "What lab do you want to test : ";
 
+		try
+		{
+			string input;
+			cin >> input;
+
+			if (input == "cls")
+			{
+				system("cls");
+				continue;
+			}
+			else if (input == "exit")
+			{
+				return 0;
+			}
+
+			n = stoi(input);
+		}
+		catch (...)
+		{
+			cout << "Try again" << endl;
+			continue;
+		}
+
+		switch (n)
+		{
+		case 1: main_lab1(); break;
+		case 2: main_lab2_stack(); break;
+		case 3: main_lab2_queue(); break;
+		case 4: main_lab2_deque(); break;
+		case 5: main_lab3_binary_search_tree(); break;
+		case 6: main_lab3_red_black_tree(); break;
+		case 7: main_lab4(); break;
+		case 8:
+		default:
+			break;
+		}
+
+	} while (true);
+#endif
 
 	return 0;
 }

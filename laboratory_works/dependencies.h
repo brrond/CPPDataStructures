@@ -9,7 +9,10 @@
 #include <algorithm>
 #include <functional>
 
-#define DEBUG
+#define MODE 2
+// 0 - DEBUG
+// 1 - End after first start
+// 2 - work until exit command
 
 //#include "../slist_llist_cllist/list.h"
 #include "../slist_llist_cllist/linked_list.h"

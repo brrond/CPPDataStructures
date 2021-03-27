@@ -200,7 +200,9 @@ int main_lab1()
 		try
 		{
 			cout << ">>>";
-			cin >> menu;
+			string input;
+			cin >> input;
+			menu = stoi(input);
 		}
 		catch(...)
 		{
