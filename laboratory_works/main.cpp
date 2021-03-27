@@ -15,6 +15,8 @@ int main()
 		cout << "3) Queue" << endl;
 		cout << "4) Deque" << endl;
 		cout << "5) Binary search tree" << endl;
+		cout << "6) Red black tree" << endl;
+		cout << "7) 4th lab" << endl;
 		cout << "What lab do you want to test : ";
 		try 
 		{
@@ -45,6 +47,14 @@ int main()
 		{
 			return main_lab3_binary_search_tree();
 		}
+		else if (n == 6)
+		{
+			return main_lab3_red_black_tree();
+		}
+		else if (n == 7)
+		{
+			return main_lab4();
+		}
 	} while (true);
 #else
 
@@ -54,6 +64,7 @@ int main()
 	//main_lab2_deque();
 	//main_lab3_binary_search_tree();
 	//main_lab3_red_black_tree();
+	main_lab4();
 
 #endif
 
