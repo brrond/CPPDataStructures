@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <functional>
 
-#define MODE 2
+#define MODE 0
 // 0 - DEBUG
 // 1 - End after first start
 // 2 - work until exit command

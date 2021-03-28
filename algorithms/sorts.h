@@ -47,7 +47,7 @@ void shell_sort(_It_Ty b, _It_Ty e, _Cmp_Func _func)
 	{
 		for (int i = d; i != (e - b); i++)
 		{
-			for (int j = i; (b + j) - b >= d; j -= d)
+			for (int j = i; j >= d; j -= d)
 			{
 				if(_func (*(b + j), *(b + j - d)))
 					std::swap(*(b + j), *(b + j - d));
