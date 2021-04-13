@@ -16,7 +16,9 @@ int main()
 		cout << "4) Deque" << endl;
 		cout << "5) Binary search tree" << endl;
 		cout << "6) Red black tree" << endl;
-		cout << "7) 4th lab" << endl;
+		cout << "7) sorts 4th lab" << endl;
+		cout << "8) search 5th lab" << endl;
+		cout << "9) substr 5th lab" << endl;
 		cout << "What lab do you want to test : ";
 
 		try 
@@ -37,7 +39,8 @@ int main()
 		case 5: return main_lab3_binary_search_tree();
 		case 6: return main_lab3_red_black_tree();
 		case 7: return main_lab4();
-		case 8:
+		case 8: return main_lab5_search();
+		case 9: return main_lab5_substr();
 		default:
 			break;
 		}
@@ -51,7 +54,10 @@ int main()
 	//main_lab2_deque();
 	//main_lab3_binary_search_tree();
 	//main_lab3_red_black_tree();
-	main_lab4();
+	//main_lab4();
+	
+	//main_lab5_search();
+	main_lab5_substr();
 
 #else
 	do
@@ -63,7 +69,9 @@ int main()
 		cout << "4) Deque" << endl;
 		cout << "5) Binary search tree" << endl;
 		cout << "6) Red black tree" << endl;
-		cout << "7) 4th lab" << endl;
+		cout << "7) sorts lab" << endl;
+		cout << "8) search lab" << endl;
+		cout << "9) substr" << endl;
 		cout << "What lab do you want to test : ";
 
 		try
@@ -98,7 +106,8 @@ int main()
 		case 5: main_lab3_binary_search_tree(); break;
 		case 6: main_lab3_red_black_tree(); break;
 		case 7: main_lab4(); break;
-		case 8:
+		case 8: main_lab5_search(); break;
+		case 9: main_lab5_substr(); break;
 		default:
 			break;
 		}

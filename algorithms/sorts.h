@@ -7,13 +7,16 @@ using std::swap;
 template <typename _It_Ty, typename _Cmp_Func>
 void insertion_sort(_It_Ty b, _It_Ty e, _Cmp_Func _func)
 {
+	//size_t count = 0;
 	for (int i = 1; i < (e - b); i++)
 	{
 		int curr = i;
+		//count++;
 		while (curr && _func(*(b + curr), *(b + curr - 1)))
 		{
+			//count++;
 			swap(*(b + curr), *(b + curr - 1));
-			curr--;
+			//curr--;
 		}
 	}
 }
@@ -43,12 +46,16 @@ void insertion_sort(vector<_Ty> &arr)
 template <typename _It_Ty, typename _Cmp_Func>
 void shell_sort(_It_Ty b, _It_Ty e, _Cmp_Func _func)
 {
+	//unsigned long long count = 0;
 	for (int d = (e - b) / 2; d != 0; d /= 2)
 	{
+		//count++;
 		for (int i = d; i != (e - b); i++)
 		{
+			//count++;
 			for (int j = i; j >= d; j -= d)
 			{
+				//count++;
 				if(_func (*(b + j), *(b + j - d)))
 					std::swap(*(b + j), *(b + j - d));
 			}
@@ -76,6 +83,8 @@ void shell_sort(vector<_Ty>& arr)
 			{
 				if (*(b + j) < *(b + j - d))
 					std::swap(*(b + j), *(b + j - d));
+				else
+					break;
 			}
 		}
 	}
@@ -84,12 +93,15 @@ void shell_sort(vector<_Ty>& arr)
 template <typename _It_Ty, typename _Cmp_Func>
 void selection_sort(_It_Ty b, _It_Ty e, _Cmp_Func _func)
 {
+	//unsigned long long count = 0;
 	int sorted = 0;
 	while (sorted < (e - b))
 	{
+		//count++;
 		int min_i = sorted;
 		for (int i = sorted + 1; i < (e - b); i++)
 		{
+			//count++;
 			if (_func (*(b + i), *(b + min_i)))
 				min_i = i;
 		}

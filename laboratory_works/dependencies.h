@@ -27,6 +27,8 @@
 
 #include "../algorithms/sorts.h"
 
+#include "../algorithms/search.h"
+
 int main_lab1();
 
 int main_lab2_stack();
@@ -37,3 +39,6 @@ int main_lab3_binary_search_tree();
 int main_lab3_red_black_tree();
 
 int main_lab4();
+
+int main_lab5_search();
+int main_lab5_substr();
