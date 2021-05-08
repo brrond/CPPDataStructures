@@ -234,7 +234,7 @@ int main_lab5_search()
 				}
 			} while (true);
 
-			cout << "Results is : " << linear_search(arr.begin(), arr.end(), n) << endl;
+			cout << "Results is : " << linear_search_with_barrier(arr.begin(), arr.end(), n) << endl;
 		}
 		else if (menu == 8)
 		{
@@ -267,8 +267,77 @@ int main_lab5_search()
 	return 0;
 }
 
-
 int main_lab5_substr()
 {
+	string main_str;
 
+	cout << "Enter main string : ";
+	getline(cin, main_str);
+	cout << "String is : " << endl << main_str << endl;
+	do
+	{
+		cout << "Main string : " << main_str << endl;
+		cout << "1) Input new main search string" << endl;
+		cout << "2) Linear search" << endl;
+		cout << "3) KPM search" << endl;
+		cout << "4) BM search" << endl;
+		cout << "5) RK search" << endl;
+		cout << ">>>";
+		string input;
+		int menu;
+
+		cin >> input;
+
+		try
+		{
+			if (input == "exit")
+				return 0;
+
+			menu = stoi(input);
+		}
+		catch (...)
+		{
+			cout << "Try again" << endl;
+			continue;
+		}
+
+		if (menu == 1)
+		{
+			cout << "Enter new string : ";
+			getline(cin, input);
+			getline(cin, main_str);
+			cout << "Done" << endl;
+		}
+		else if (menu == 2)
+		{
+			cout << "Enter substr : ";
+			getline(cin, input);
+			getline(cin, input);
+			cout << "Result : " << substr_search_linear(main_str, input) << endl;
+		}
+		else if (menu == 3)
+		{
+			cout << "Enter substr : ";
+			getline(cin, input);
+			getline(cin, input);
+			cout << "Result : " << substr_search_kpm(main_str, input) << endl;
+		}
+		else if (menu == 4)
+		{
+			cout << "Enter substr : ";
+			getline(cin, input);
+			getline(cin, input);
+			cout << "Result : " << substr_search_bm(main_str, input) << endl;
+		}
+		else if (menu == 5)
+		{
+			cout << "Enter substr : ";
+			getline(cin, input);
+			getline(cin, input);
+			cout << "Result : " << substr_search_rk(main_str, input) << endl;
+		}
+
+
+
+	} while (true);
 }

@@ -55,9 +55,8 @@ int main()
 	//main_lab3_binary_search_tree();
 	//main_lab3_red_black_tree();
 	//main_lab4();
-	
 	//main_lab5_search();
-	main_lab5_substr();
+	//main_lab5_substr();
 
 #else
 	do

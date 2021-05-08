@@ -28,6 +28,7 @@
 #include "../algorithms/sorts.h"
 
 #include "../algorithms/search.h"
+#include "../algorithms/substr.h"
 
 int main_lab1();
 
