@@ -19,6 +19,7 @@ int main()
 		cout << "7) sorts 4th lab" << endl;
 		cout << "8) search 5th lab" << endl;
 		cout << "9) substr 5th lab" << endl;
+		cout << "10) Lab #6. Hash" << endl;
 		cout << "What lab do you want to test : ";
 
 		try 
@@ -41,6 +42,7 @@ int main()
 		case 7: return main_lab4();
 		case 8: return main_lab5_search();
 		case 9: return main_lab5_substr();
+		case 10: return main_lab6();
 		default:
 			break;
 		}
@@ -58,6 +60,8 @@ int main()
 	//main_lab5_search();
 	//main_lab5_substr();
 
+	main_lab6();
+
 #else
 	do
 	{
@@ -71,6 +75,7 @@ int main()
 		cout << "7) sorts lab" << endl;
 		cout << "8) search lab" << endl;
 		cout << "9) substr" << endl;
+		cout << "10) Lab #6. Hash" << endl;
 		cout << "What lab do you want to test : ";
 
 		try
@@ -107,6 +112,7 @@ int main()
 		case 7: main_lab4(); break;
 		case 8: main_lab5_search(); break;
 		case 9: main_lab5_substr(); break;
+		case 10: main_bab6(); break;
 		default:
 			break;
 		}

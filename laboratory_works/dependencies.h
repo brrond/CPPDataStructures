@@ -8,6 +8,7 @@
 #include <fstream>
 #include <algorithm>
 #include <functional>
+#include <cmath>
 
 #define MODE 0
 // 0 - DEBUG
@@ -30,6 +31,8 @@
 #include "../algorithms/search.h"
 #include "../algorithms/substr.h"
 
+#include "../hash/chain_hash.h"
+
 int main_lab1();
 
 int main_lab2_stack();
@@ -43,3 +46,5 @@ int main_lab4();
 
 int main_lab5_search();
 int main_lab5_substr();
+
+int main_lab6();
