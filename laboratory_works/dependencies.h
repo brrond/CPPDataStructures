@@ -32,6 +32,7 @@
 #include "../algorithms/substr.h"
 
 #include "../hash/chain_hash.h"
+#include "../hash/hash_table.h"
 
 int main_lab1();
 
