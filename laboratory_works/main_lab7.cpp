@@ -10,5 +10,10 @@ int main_lab7()
 	gh.print_with_zero = false;
 
 	cout << gh.get_adjacency_matrix_printer();
+
+	auto r = gh.dfs(2);
+
+	auto r2 = gh.bfd();
+
 	return 0;
 }
