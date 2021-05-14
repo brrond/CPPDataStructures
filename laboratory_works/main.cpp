@@ -59,8 +59,9 @@ int main()
 	//main_lab4();
 	//main_lab5_search();
 	//main_lab5_substr();
+	//main_lab6();
 
-	main_lab6();
+	main_lab7();
 
 #else
 	do

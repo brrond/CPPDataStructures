@@ -3,11 +3,15 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
+#include <fstream>
+
 #include <vector>
 #include <string>
-#include <fstream>
+#include <forward_list>
+
 #include <algorithm>
 #include <functional>
+
 #include <cmath>
 
 #define MODE 0
@@ -34,6 +38,8 @@
 #include "../hash/chain_hash.h"
 #include "../hash/hash_table.h"
 
+#include "../graphs/graph.h"
+
 int main_lab1();
 
 int main_lab2_stack();
@@ -49,3 +55,5 @@ int main_lab5_search();
 int main_lab5_substr();
 
 int main_lab6();
+
+int main_lab7();
