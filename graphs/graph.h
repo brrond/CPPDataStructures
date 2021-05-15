@@ -186,7 +186,6 @@ private:
 	vector<vector<pair<int, int>>> adjacency_list;
 };
 
-
 class graph
 {
 public:
@@ -267,43 +266,43 @@ public:
 
 	~graph() {}
 
-	vector<vector<int>> get_adjacency_matrix() 
+	inline vector<vector<int>> get_adjacency_matrix()
 	{ 
 		return adjacency_matrix; 
 	}
 
-	vector<vector<int>> get_incidence_matrix() 
+	inline vector<vector<int>> get_incidence_matrix()
 	{ 
 		return adjacency_matrix_to_incidence_matrix(adjacency_matrix); 
 	}
 
-	vector<pair<pair<int, int>, int>> get_edges_list() 
+	inline vector<pair<pair<int, int>, int>> get_edges_list()
 	{ 
 		return incidence_matrix_to_edges_list(adjacency_matrix_to_incidence_matrix(adjacency_matrix)); 
 	}
 
-	vector<vector<pair<int, int>>> get_adjacency_list()
+	inline vector<vector<pair<int, int>>> get_adjacency_list()
 	{
 		return adjacency_matrix_to_adjacency_list(adjacency_matrix);
 	}
 
-	adjacency_matrix_printer get_adjacency_matrix_printer()
+	inline adjacency_matrix_printer get_adjacency_matrix_printer()
 	{
 		return adjacency_matrix_printer(adjacency_matrix, print_with_zero);
 	}
 
-	incidence_matrix_printer get_incidence_matrix_printer()
+	inline incidence_matrix_printer get_incidence_matrix_printer()
 	{
 		return incidence_matrix_printer(adjacency_matrix_to_incidence_matrix(adjacency_matrix),
 			print_with_zero);
 	}
 
-	edges_list_printer get_edges_list_printer()
+	inline edges_list_printer get_edges_list_printer()
 	{
 		return edges_list_printer(get_edges_list());
 	}
 
-	adjacency_list_printer get_adjacency_list_printer()
+	inline adjacency_list_printer get_adjacency_list_printer()
 	{
 		return adjacency_list_printer(get_adjacency_list());
 	}
@@ -441,6 +440,60 @@ public:
 			}
 		}
 		return res;
+	}
+
+	// Floyd–Warshall algorithm (get distance matrix)
+	vector<vector<int>> wfi()
+	{
+		int S = 1;
+		for (auto vec : adjacency_matrix)
+			for (int v : vec)
+				S += abs(v);
+
+		vector<vector<int>> dist(adjacency_matrix.size(), vector<int>(adjacency_matrix.size(), S));
+		for (int i = 0; i < adjacency_matrix.size(); i++)
+			for (int j = 0; j < adjacency_matrix[i].size(); j++)
+				if (adjacency_matrix[i][j])
+					dist[i][j] = adjacency_matrix[i][j];
+
+		for (int i = 0; i < adjacency_matrix.size(); i++)
+			dist[i][i] = 0;
+
+		for (int k = 0; k < adjacency_matrix.size(); k++)
+			for (int i = 0; i < adjacency_matrix.size(); i++)
+				for (int j = 0; j < adjacency_matrix.size(); j++)
+					if (dist[i][j] > dist[i][k] + dist[k][j])
+						dist[i][j] = dist[i][k] + dist[k][j];
+
+		for (int i = 0; i < adjacency_matrix.size(); i++)
+			for (int j = 0; j < adjacency_matrix.size(); j++)
+				if (dist[i][j] == S)
+					dist[i][j] = 0;
+
+		return dist;
+	}
+
+	vector<int> dijkstras_algorithm(int start = 0)
+	{
+		int S = 1;
+		for (auto vec : adjacency_matrix)
+			for (int v : vec)
+				S += abs(v);
+
+		vector<int> d(adjacency_matrix.size(), S);
+		d[start] = 0;
+		vector<int> ver = bfd(start);
+		while (ver.size())
+		{
+			int curr = ver[0];
+			ver.erase(ver.begin());
+			for(int v = 0; v < adjacency_matrix.size(); v++)
+				if (adjacency_matrix[curr][v])
+					if (d[v] > d[curr] + adjacency_matrix[curr][v])
+						d[v] = d[curr] + adjacency_matrix[curr][v];
+		}
+
+		return d;
 	}
 
 protected:

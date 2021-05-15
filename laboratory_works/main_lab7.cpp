@@ -15,5 +15,9 @@ int main_lab7()
 
 	auto r2 = gh.bfd();
 
+	auto r3 = gh.wfi();
+
+	auto r4 = gh.dijkstras_algorithm();
+
 	return 0;
 }
