@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 #include <vector>
 #include <string>
@@ -56,4 +57,4 @@ int main_lab5_substr();
 
 int main_lab6();
 
-int main_lab7();
+int main_lab7_lab8();

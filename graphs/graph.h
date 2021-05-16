@@ -189,7 +189,7 @@ private:
 class graph
 {
 public:
-	bool print_with_zero = true;
+	bool print_with_zero = false;
 
 public:
 
@@ -408,6 +408,21 @@ public:
 		return al;
 	}
 
+	static vector<vector<int>> edges_list_to_adjacency_matrix(vector<pair<pair<int, int>, int>> el)
+	{
+		int n = 0;
+		for (auto e : el)
+		{
+			if (e.first.first > n) n = e.first.first;
+			if (e.first.second > n) n = e.first.second;
+		}
+		n++;
+		vector<vector<int>> res(n, vector<int>(n, 0));
+		for (auto e : el)
+			res[e.first.first][e.first.second] = e.second;
+		return res;
+	}
+
 	vector<int> dfs(int begin = 0)
 	{
 		vector<int> res;
@@ -493,6 +508,9 @@ public:
 						d[v] = d[curr] + adjacency_matrix[curr][v];
 		}
 
+		for (int i = 0; i < d.size(); i++)
+				if (d[i] == S)
+					d[i] = 0;
 		return d;
 	}
 

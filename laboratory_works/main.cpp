@@ -61,7 +61,7 @@ int main()
 	//main_lab5_substr();
 	//main_lab6();
 
-	main_lab7();
+	main_lab7_lab8();
 
 #else
 	do
