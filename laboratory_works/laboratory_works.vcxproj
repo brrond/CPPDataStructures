@@ -145,7 +145,7 @@
     <ClCompile Include="main_lab4.cpp" />
     <ClCompile Include="main_lab5.cpp" />
     <ClCompile Include="main_lab6.cpp" />
-    <ClCompile Include="main_lab7.cpp" />
+    <ClCompile Include="main_lab7_lab8.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies.h" />
